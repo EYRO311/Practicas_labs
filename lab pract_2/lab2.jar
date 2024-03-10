@@ -1,0 +1,71 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class Main {
+
+    public static int[] generateListRandom(int n) {
+        int[] lista = new int[n];
+        Random rand = new Random();
+        for (int i = 0; i < n; i++) {
+            lista[i] = rand.nextInt(201) - 100; // Rango de -100 a 100
+        }
+        return lista;
+    }
+
+    public static int minv2(int[] lista) {
+        int mini = lista[0];
+        for (int i = 1; i < lista.length; i++) {
+            if (lista[i] < mini) {
+                mini = lista[i];
+            }
+        }
+        return mini;
+    }
+
+    public static int maxv2(int[] lista) {
+        int maxi = lista[0];
+        for (int i = 0; i < lista.length; i++) {
+            if (lista[i] > maxi) {
+                maxi = lista[i];
+            }
+        }
+        return maxi;
+    }
+
+    public static int[] sumarListas(int[] lista1, int[] lista2) {
+        int[] sumaListas = new int[lista1.length];
+        for (int i = 0; i < lista1.length; i++) {
+            sumaListas[i] = lista1[i] + lista2[i];
+        }
+        return sumaListas;
+    }
+
+    public static void main(String[] args) {
+        int[] lista1 = generateListRandom(10);
+        int[] lista2 = generateListRandom(10);
+
+        System.out.println("Lista 1 " + Arrays.toString(lista1));
+        System.out.println("Lista 2 " + Arrays.toString(lista2));
+
+        System.out.println("El mínimo de lista 1 es " + minv2(lista1));
+        System.out.println("El mínimo de lista 2 es " + minv2(lista2));
+
+        System.out.println("El máximo de lista 1 es " + maxv2(lista1));
+        System.out.println("El máximo de lista 2 es " + maxv2(lista2));
+
+        int[] sumarListasResult = sumarListas(lista1, lista2);
+        System.out.println("Listas sumadas " + Arrays.toString(sumarListasResult));
+        
+        int sum = 0;
+        for (int num : sumarListasResult) {
+            sum += num;
+        }
+        System.out.println("Suma de las listas: " + sum);
+
+        long startTime = System.currentTimeMillis();
+
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("Execution time: " + (endTime - startTime) + " milliseconds");
+    }
+}
